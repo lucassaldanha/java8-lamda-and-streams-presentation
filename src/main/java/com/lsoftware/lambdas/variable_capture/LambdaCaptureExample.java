@@ -8,7 +8,7 @@ public class LambdaCaptureExample {
     public static void main(String[] args) {
         List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
 
-        int var = 10;
+        int var = 10;   // Must be effectively final
 
         integers.forEach(x -> {
             x += var;

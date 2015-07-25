@@ -7,7 +7,7 @@ public class LambdaCaptureStaticVariableExample {
 
     private static int staticVar = 10;
 
-    //private static final int staticVar = 10;
+//    private static final int staticVar = 10;
 
     public void doSomething() {
         List<Integer> integers = Arrays.asList(1, 2, 3, 4, 5);
