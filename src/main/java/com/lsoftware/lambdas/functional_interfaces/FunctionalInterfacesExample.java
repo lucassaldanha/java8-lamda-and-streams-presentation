@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Example of the {@code Consumer} functional interface.<br>
+ * For a complete list of Java 8 functional interfaces see <b>java.util.function</b> package.
+ * @see Consumer
+ */
 public class FunctionalInterfacesExample {
 
     public static void main(String[] args) {
