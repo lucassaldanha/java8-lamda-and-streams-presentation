@@ -7,7 +7,7 @@ public interface Test {
     }
 
     default String identifier() {
-        return this.getClass().getSimpleName() + ".doSomething() -> ";
+        return this.getClass().getSimpleName() + ".doSomething() : ";
     }
 
 }

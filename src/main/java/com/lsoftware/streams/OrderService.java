@@ -12,7 +12,8 @@ public class OrderService {
 
         OptionalDouble average = orderStream
                 .filter(o -> o.getItems().size() >= 2)
-                .mapToDouble(Order::getTotal).average();
+                .mapToDouble(Order::getTotal)
+                .average();
 
         System.out.println("Average of orders with more than 2 items: " + average.getAsDouble());
     }

@@ -10,7 +10,7 @@ public class BasicStreamExample {
 
         int totalOnlineOrders = orders.stream()
                 .filter(o -> o.getType() == OrderType.ONLINE)
-                .mapToInt(o -> o.getQuantity())
+                .mapToInt(Order::getQuantity)
                 .sum();
 
         System.out.println("Total ONLINE orders = " + totalOnlineOrders);
@@ -41,8 +41,8 @@ public class BasicStreamExample {
         }
     }
 
-    public static enum OrderType {
-        STORE, ONLINE;
+    public enum OrderType {
+        STORE, ONLINE
     }
 
 }
