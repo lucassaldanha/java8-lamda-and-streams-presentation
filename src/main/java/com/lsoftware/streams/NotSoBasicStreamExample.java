@@ -1,10 +1,8 @@
 package com.lsoftware.streams;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.BiConsumer;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class NotSoBasicStreamExample {
@@ -39,13 +37,15 @@ public class NotSoBasicStreamExample {
 
     public static void streamOnlineOrdersMap() {
         getOrders().stream()
-            .filter(o -> o.getType() == OrderType.ONLINE)
-            .collect(Collectors.toMap(Order::getUserId, Order::getQuantity))
-            .forEach((u, t) -> System.out.println("User " + u + " has " + t + " online orders"));
+                .filter(o -> o.getType() == OrderType.ONLINE)
+                .collect(
+                        Collectors.groupingBy(Order::getUserId, Collectors.summingInt(Order::getQuantity)))
+                .forEach((u, t) -> System.out.println("User " + u + " has " + t + " online orders"));
     }
 
     public static List<Order> getOrders() {
         return Arrays.asList(
+                new Order(OrderType.ONLINE, 3, 1),
                 new Order(OrderType.ONLINE, 3, 1),
                 new Order(OrderType.ONLINE, 2, 2),
                 new Order(OrderType.STORE, 2, 1),
@@ -78,10 +78,6 @@ public class NotSoBasicStreamExample {
 
     public enum OrderType {
         STORE, ONLINE
-    }
-
-    public static BiConsumer<Integer, Integer> printOrder() {
-        return (u, t) -> System.out.println("User " + u + " has " + t + " online orders");
     }
 
 }
